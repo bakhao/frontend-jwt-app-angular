@@ -9,9 +9,20 @@ import { BackendApiService } from '../backend-api.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  varHello = '';
+  constructor(private backendApiService: BackendApiService) { }
 
   ngOnInit(): void {
+    this.varHello = this.hello();
+  }
+
+  hello(): string {
+      this.backendApiService.getResourceHello()
+      .subscribe((data) => {
+           console.log(data);
+           this.varHello = data;
+      });
+      return this.varHello;
   }
 
 

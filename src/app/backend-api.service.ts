@@ -7,11 +7,15 @@ import { Observable } from 'rxjs';
 })
 export class BackendApiService {
 
-  url = "http://localhost:8000/";
+  url = "https://tranquil-temple-27643.herokuapp.com/";
   accessToken = '';
   refreshToken = '';
 
   constructor(private http: HttpClient) {
+  }
+
+  getResourceHello(): Observable<any> {
+    return this.http.get(this.url + "hello");
   }
 
   login(data: any): Observable<any> {
@@ -40,4 +44,9 @@ export class BackendApiService {
     alert('Hey guys the session has expired');
     localStorage.clear();
   }
+
+  removeToken() {
+    localStorage.removeItem('token');
+  }
+
 }

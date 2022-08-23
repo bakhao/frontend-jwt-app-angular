@@ -13,10 +13,10 @@ export class RequestInterceptorComponent implements HttpInterceptor {
   constructor(private backendApiService: BackendApiService) { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
   console.log("getTOken()  ", this.backendApiService.getToken());
-  if(req.url.includes('register')){
-    return next.handle(req);
-  }
 
+    if (req.url.includes("register")) {
+      return next.handle(req);
+    }
     let logReq = req.clone(
       {
         setHeaders: {

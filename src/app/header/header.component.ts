@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
 
   logout() {
       this.backendApiService.logout(this.backendApiService.refreshToken).subscribe(()=>{
+        this.backendApiService.removeToken();
         this.route.navigate(['/login']);
       });
   }
